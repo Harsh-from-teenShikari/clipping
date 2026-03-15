@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.db import get_db
 from app.modules.creator_profile import CreatorProfile
+from app.modules.user import User
 from app.modules.dashboard_models import Submission, Commission, Payout
 
 router = APIRouter(prefix="/api/v1/identity", tags=["identity"])
@@ -10,10 +11,13 @@ router = APIRouter(prefix="/api/v1/identity", tags=["identity"])
 @router.get("/dashboard/{creator_id}")
 def get_creator_dashboard(creator_id: str, db: Session = Depends(get_db)):
 
-    profile = db.query(CreatorProfile).filter_by(id=creator_id).first()
+    # Fetch profile and join with User to get account info
+    result = db.query(CreatorProfile, User).join(User, CreatorProfile.user_id == User.id).filter(CreatorProfile.id == creator_id).first()
 
-    if not profile:
+    if not result:
         raise HTTPException(status_code=404, detail="Creator not found")
+
+    profile, user = result
 
     total_submissions = db.query(Submission).filter_by(creator_id=creator_id).count()
     approved_submissions = db.query(Submission).filter_by(creator_id=creator_id, status="approved").count()
@@ -25,7 +29,13 @@ def get_creator_dashboard(creator_id: str, db: Session = Depends(get_db)):
     pending_payout_amount = sum(p.amount for p in pending_payouts)
 
     return {
-        "profile": {
+        "user_profile": {
+            "id": user.id,
+            "email": user.email,
+            "role": user.role,
+        },
+        "creator_profile": {
+            "id": profile.id,
             "niche": profile.niche,
             "region": profile.region,
             "followers": profile.followers,

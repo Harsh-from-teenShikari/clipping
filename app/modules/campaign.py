@@ -23,7 +23,9 @@ class Campaign(Base):
     target_metric = Column(Integer, default=0)
     target_reward = Column(Float, default=0)
     created_at = Column(DateTime, default=datetime.utcnow)
-
+    joined_creators = Column(JSON, default=[])
+    platform = Column(String, nullable=False)
+    # creator_id = Column(String, nullable=True)
 
 class AuditLog(Base):
     __tablename__ = "audit_logs"

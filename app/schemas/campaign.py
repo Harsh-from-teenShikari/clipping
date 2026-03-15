@@ -5,6 +5,7 @@ from typing import Literal, Optional
 class CreateCampaignBody(BaseModel):
     name: str
     type: Literal["CLIPPING", "AFFILIATE", "SUBSCRIPTION"]
+    platform: Literal["instagram", "youtube", "Twitter"]
     region: str
     min_followers: int = 0
     target_niche: str
@@ -17,6 +18,7 @@ class CreateCampaignBody(BaseModel):
 
 class UpdateCampaignBody(BaseModel):
     name: Optional[str] = None
+    platform: Optional[Literal["instagram", "youtube", "Twitter"]] = None
     region: Optional[str] = None
     min_followers: Optional[int] = None
     target_niche: Optional[str] = None

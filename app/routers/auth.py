@@ -25,8 +25,19 @@ def register(body: RegisterBody, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(new_user)
 
+    # Automatically create a CreatorProfile with ID equal to user_id
+    profile = CreatorProfile(id=new_user.id, user_id=new_user.id)
+    db.add(profile)
+    
+    # Update user with the creator_id link
+    new_user.creator_id = profile.id
+    
+    db.commit()
+    db.refresh(profile)
+    db.refresh(new_user)
+
     token = create_token(
-        {"user_id": new_user.id, "role": new_user.role}
+        {"user_id": new_user.id, "role": new_user.role, "creator_id": profile.id}
     )
 
     return {
@@ -34,6 +45,7 @@ def register(body: RegisterBody, db: Session = Depends(get_db)):
             "id": new_user.id,
             "email": new_user.email,
             "role": new_user.role,
+            "creator_id": profile.id,
         },
         "access_token": token,
         "token_type": "bearer",
@@ -51,8 +63,22 @@ def login(body: LoginBody, db: Session = Depends(get_db)):
     if not verify_password(body.password, user.password_hash):
         raise HTTPException(status_code=401, detail="Invalid")
 
+    # Ensure the user has a CreatorProfile and is linked
+    profile = db.query(CreatorProfile).filter_by(user_id=user.id).first()
+    if not profile:
+        profile = CreatorProfile(id=user.id, user_id=user.id)
+        db.add(profile)
+        user.creator_id = profile.id
+        db.commit()
+        db.refresh(profile)
+        db.refresh(user)
+    elif not user.creator_id:
+        user.creator_id = profile.id
+        db.commit()
+        db.refresh(user)
+
     token = create_token(
-        {"user_id": user.id, "role": user.role}
+        {"user_id": user.id, "role": user.role, "creator_id": profile.id}
     )
 
     return {
@@ -60,6 +86,7 @@ def login(body: LoginBody, db: Session = Depends(get_db)):
             "id": user.id,
             "email": user.email,
             "role": user.role,
+            "creator_id": profile.id,
         },
         "access_token": token,
         "token_type": "bearer",

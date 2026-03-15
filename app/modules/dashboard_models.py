@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, Float, ForeignKey
+from sqlalchemy import Column, String, Integer, Float, ForeignKey, JSON, Boolean
 from app.db import Base
 import uuid
 
@@ -12,6 +12,7 @@ class Submission(Base):
     id = Column(String, primary_key=True, default=cuid)
     creator_id = Column(String, ForeignKey("creator_profiles.id"))
     campaign_id = Column(String, nullable=True)
+    content_data = Column(JSON, nullable=True)
     status = Column(String, default="pending")  # pending, approved, rejected
 
 
@@ -29,3 +30,13 @@ class Payout(Base):
     creator_id = Column(String, ForeignKey("creator_profiles.id"))
     amount = Column(Float, default=0)
     status = Column(String, default="pending")  # pending, completed
+
+
+class VerifiedSubmission(Base):
+    __tablename__ = "verified_submissions"
+    id = Column(String, primary_key=True, default=cuid)
+    creator_id = Column(String)
+    post_link = Column(String)
+    submitter = Column(String)  # user_id
+    campaign_id = Column(String)
+    passed = Column(Boolean, default=False)

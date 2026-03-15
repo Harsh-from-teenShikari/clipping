@@ -22,6 +22,7 @@ def create_campaign(body: CreateCampaignBody, db: Session = Depends(get_db)):
         reward_pool=body.reward_pool,
         target_metric=body.target_metric,
         target_reward=body.target_reward,
+        platform=body.platform,
         status="draft",
     )
 
@@ -65,6 +66,7 @@ def get_all_campaigns(
             "id": c.id,
             "name": c.name,
             "type": c.type,
+            "platform": c.platform,
             "status": c.status,
             "reward_pool": c.reward_pool,
         }
@@ -81,9 +83,11 @@ def get_campaign_detail(campaign_id: str, db: Session = Depends(get_db)):
         "id": campaign.id,
         "name": campaign.name,
         "type": campaign.type,
+        "platform": campaign.platform,
         "status": campaign.status,
         "required_hashtags": campaign.required_hashtags,
         "reward_pool": campaign.reward_pool,
+        "joined_creators": campaign.joined_creators or [],
     }
 
 
@@ -155,7 +159,20 @@ def join_campaign(campaign_id: str, body: dict, db: Session = Depends(get_db)):
 
     participant = CampaignParticipant(campaign_id=campaign_id, creator_id=creator_id)
     db.add(participant)
+    
+    # Update joined_creators list in Campaign model
+    if campaign.joined_creators is None:
+        campaign.joined_creators = []
+    
+    # Avoid duplicates if any (though CampaignParticipant check already handles it)
+    if creator_id not in campaign.joined_creators:
+        # We need to make a copy for SQLAlchemy to detect the change in JSON
+        new_list = list(campaign.joined_creators)
+        new_list.append(creator_id)
+        campaign.joined_creators = new_list
+    
     db.commit()
     db.refresh(participant)
+    db.refresh(campaign)
 
     return {"message": "Successfully joined campaign.", "joined_at": str(participant.joined_at)}

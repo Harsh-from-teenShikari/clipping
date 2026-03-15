@@ -1,0 +1,54 @@
+INFO:     Will watch for changes in these directories: ['/Users/harsh/Desktop/Clipping']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [50454] using WatchFiles
+INFO:     Started server process [50456]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+PostgreSQL connection failed: (psycopg2.ProgrammingError) invalid dsn: invalid connection option "schema"
+
+(Background on this error at: https://sqlalche.me/e/20/f405). Falling back to SQLite for preview.
+INFO:     127.0.0.1:56296 - "POST /api/v1/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56298 - "POST /api/v1/campaigns/ HTTP/1.1" 201 Created
+INFO:     127.0.0.1:56300 - "PATCH /api/v1/campaigns/cuid_edc91ec864/activate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56302 - "POST /api/v1/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56304 - "POST /api/v1/campaigns/cuid_edc91ec864/join HTTP/1.1" 201 Created
+INFO:     127.0.0.1:56306 - "POST /api/v1/submissions/ HTTP/1.1" 201 Created
+AI Service: Starting evaluation for submission cuid_e3f9ab539a in campaign cuid_edc91ec864
+INFO:     127.0.0.1:56308 - "GET /api/v1/identity/dashboard/cuid_c505f5cea2 HTTP/1.1" 200 OK
+AI Service: Extracted 15000 views for https://www.instagram.com/p/test_15000 on instagram
+AI Service: Verification PASSED for https://www.instagram.com/p/test_15000
+AI Service: Evaluation completed for https://www.instagram.com/p/test_15000
+INFO:     127.0.0.1:56500 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56500 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56500 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56500 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56500 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56500 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56500 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56500 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56502 - "GET /api/v1/auth/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56580 - "POST /api/v1/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56587 - "POST /api/v1/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56650 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56656 - "GET /api/v1/auth/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56673 - "GET /api/v1/auth/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56680 - "GET /api/v1/identity/dashboard/cuid_2ee3c88c1b HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56754 - "POST /api/v1/campaigns/ HTTP/1.1" 201 Created
+INFO:     127.0.0.1:56764 - "POST /api/v1/campaigns/ HTTP/1.1" 201 Created
+INFO:     127.0.0.1:56797 - "GET /api/v1/campaigns/cuid_b062dbde4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56848 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56848 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56850 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56891 - "GET /api/v1/campaigns/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56980 - "GET /api/v1/campaigns/cuid_b062dbde4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57000 - "GET /api/v1/auth/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57099 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57142 - "POST /api/v1/campaigns/cuid_b062dbde4f/join HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:57313 - "GET /api/v1/campaigns/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57328 - "PATCH /api/v1/campaigns/cuid_b062dbde4f/activate HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:57345 - "PATCH /api/v1/campaigns/cuid_b062dbde4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57351 - "PATCH /api/v1/campaigns/cuid_b062dbde4f/activate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57403 - "POST /api/v1/campaigns/cuid_b062dbde4f/join HTTP/1.1" 201 Created
+INFO:     127.0.0.1:57449 - "GET /api/v1/campaigns/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57511 - "GET /api/v1/campaigns/cuid_b062dbde4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57794 - "POST /api/v1/submissions/ HTTP/1.1" 201 Created
