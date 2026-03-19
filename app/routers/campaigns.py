@@ -164,9 +164,7 @@ def join_campaign(campaign_id: str, body: dict, db: Session = Depends(get_db)):
     if campaign.joined_creators is None:
         campaign.joined_creators = []
     
-    # Avoid duplicates if any (though CampaignParticipant check already handles it)
     if creator_id not in campaign.joined_creators:
-        # We need to make a copy for SQLAlchemy to detect the change in JSON
         new_list = list(campaign.joined_creators)
         new_list.append(creator_id)
         campaign.joined_creators = new_list

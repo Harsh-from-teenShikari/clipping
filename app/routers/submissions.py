@@ -1,9 +1,15 @@
 from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
+from typing import List
 from app.db import get_db
-from app.modules.dashboard_models import Submission
+from app.modules.dashboard_models import Submission, VerifiedSubmission
 from app.modules.campaign import Campaign
-from app.schemas.submission import SubmissionCreate, SubmissionResponse
+from app.schemas.submission import (
+    SubmissionCreate, 
+    SubmissionResponse, 
+    SubmissionReview, 
+    VerifiedSubmissionResponse
+)
 from app.core.ai_service import ai_service
 import asyncio
 
@@ -19,7 +25,6 @@ async def create_submission(
     campaign = db.query(Campaign).filter_by(id=body.campaign_id).first()
     if not campaign:
         raise HTTPException(status_code=404, detail="Campaign not found")
-    
     if campaign.status != "active":
         raise HTTPException(status_code=400, detail="Campaign is not active")
 
@@ -39,11 +44,6 @@ async def create_submission(
     db.refresh(submission)
 
     # 4. Fire-and-forget background task
-    # Note: Using FastAPI's BackgroundTasks is more robust than manual asyncio.create_task 
-    # for simple use cases, but the requirement specifically mentioned asyncio.create_task.
-    # However, to keep it simple and correct in FastAPI, BackgroundTasks is preferred.
-    # I will use asyncio.create_task as requested to follow the architectural note.
-    
     background_tasks.add_task(ai_service.evaluate_submission, {
         "submission_id": submission.id,
         "campaign_id": body.campaign_id,
@@ -55,9 +55,48 @@ async def create_submission(
         "id": submission.id,
         "campaign_id": submission.campaign_id,
         "status": submission.status,
-        "message": "Submission received. AI verification in progress."
+        "message": (
+            "Submission received. Our AI is currently parsing your link for view counts. "
+            "If it meets the campaign's target metric, it will appear in the 'passed' list for the campaign owner to review."
+        )
     }
 
+@router.get("/passed/{campaign_id}", response_model=List[VerifiedSubmissionResponse])
+async def get_passed_submissions(campaign_id: str, db: Session = Depends(get_db)):
+    """
+    Returns all submissions for a campaign that have passed automated verification 
+    and are awaiting manual review.
+    """
+    passed = db.query(VerifiedSubmission).filter(
+        VerifiedSubmission.campaign_id == campaign_id,
+        VerifiedSubmission.passed == True,
+        VerifiedSubmission.review_status == "pending"
+    ).all()
+    return passed
+
+@router.post("/verify/{verified_id}/review", response_model=VerifiedSubmissionResponse)
+async def review_submission(
+    verified_id: str, 
+    review: SubmissionReview, 
+    db: Session = Depends(get_db)
+):
+    """
+    Allows campaign owners to approve or reject a passed submission.
+    If rejected, a reason must be provided.
+    """
+    verified = db.query(VerifiedSubmission).filter(VerifiedSubmission.id == verified_id).first()
+    if not verified:
+        raise HTTPException(status_code=404, detail="Verified submission not found")
     
-    
-    
+    if review.status == "rejected" and not review.rejection_reason:
+        raise HTTPException(status_code=400, detail="Rejection reason is required for 'rejected' status")
+
+    verified.review_status = review.status
+    if review.status == "rejected":
+        verified.rejection_reason = review.rejection_reason
+    else:
+        verified.rejection_reason = None # Clear reason if approved
+        
+    db.commit()
+    db.refresh(verified)
+    return verified

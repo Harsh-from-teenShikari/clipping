@@ -40,3 +40,5 @@ class VerifiedSubmission(Base):
     submitter = Column(String)  # user_id
     campaign_id = Column(String)
     passed = Column(Boolean, default=False)
+    review_status = Column(String, default="pending")  # pending, approved, rejected
+    rejection_reason = Column(String, nullable=True)  # op1, op2, op3, op4

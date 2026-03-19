@@ -45,7 +45,8 @@ class AiService:
                     post_link=content_url,
                     submitter=creator_id, # As discussed, creator_id is the submitter
                     campaign_id=campaign_id,
-                    passed=True
+                    passed=True,
+                    review_status="pending"
                 )
                 db.add(verified)
                 print(f"AI Service: Verification PASSED for {content_url}")

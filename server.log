@@ -52,3 +52,420 @@ INFO:     127.0.0.1:57403 - "POST /api/v1/campaigns/cuid_b062dbde4f/join HTTP/1.
 INFO:     127.0.0.1:57449 - "GET /api/v1/campaigns/ HTTP/1.1" 200 OK
 INFO:     127.0.0.1:57511 - "GET /api/v1/campaigns/cuid_b062dbde4f HTTP/1.1" 200 OK
 INFO:     127.0.0.1:57794 - "POST /api/v1/submissions/ HTTP/1.1" 201 Created
+AI Service: Starting evaluation for submission cuid_aa5fec595c in campaign cuid_b062dbde4f
+AI Service: Extracted 607 views for https://www.instagram.com/virat.kohli/p/DVobGBGjbwk/?hl=en on instagram
+AI Service: Verification PASSED for https://www.instagram.com/virat.kohli/p/DVobGBGjbwk/?hl=en
+AI Service: Evaluation completed for https://www.instagram.com/virat.kohli/p/DVobGBGjbwk/?hl=en
+INFO:     127.0.0.1:58095 - "POST /api/v1/submissions/ HTTP/1.1" 201 Created
+WARNING:  WatchFiles detected changes in 'app/modules/dashboard_models.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [50456]
+INFO:     Started server process [56310]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/core/ai_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [56310]
+INFO:     Started server process [56321]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/schemas/submission.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [56321]
+INFO:     Started server process [56324]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/routers/submissions.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [56324]
+INFO:     Started server process [56333]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+PostgreSQL connection failed: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: FATAL:  role "postgres" does not exist
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8). Falling back to SQLite for preview.
+INFO:     127.0.0.1:61981 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61981 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62289 - "GET /api/v1/campaigns/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62305 - "GET /api/v1/submissions/passed/cuid_b062dbde4f HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: verified_submissions.review_status
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/fastapi/applications.py", line 1160, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/fastapi/routing.py", line 130, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/fastapi/routing.py", line 116, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/fastapi/routing.py", line 670, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/fastapi/routing.py", line 324, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harsh/Desktop/Clipping/app/routers/submissions.py", line 72, in get_passed_submissions
+    ).all()
+      ~~~^^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+           ~~~~~~~~~~^^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+        params,
+        ^^^^^^^
+        execution_options={"_sa_orm_load_options": self.load_options},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: verified_submissions.review_status
+[SQL: SELECT verified_submissions.id AS verified_submissions_id, verified_submissions.creator_id AS verified_submissions_creator_id, verified_submissions.post_link AS verified_submissions_post_link, verified_submissions.submitter AS verified_submissions_submitter, verified_submissions.campaign_id AS verified_submissions_campaign_id, verified_submissions.passed AS verified_submissions_passed, verified_submissions.review_status AS verified_submissions_review_status, verified_submissions.rejection_reason AS verified_submissions_rejection_reason 
+FROM verified_submissions 
+WHERE verified_submissions.campaign_id = ? AND verified_submissions.passed = 1 AND verified_submissions.review_status = ?]
+[parameters: ('cuid_b062dbde4f', 'pending')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:62605 - "GET /api/v1/submissions/passed/cuid_b062dbde4f HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: verified_submissions.review_status
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/fastapi/applications.py", line 1160, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/fastapi/routing.py", line 130, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/fastapi/routing.py", line 116, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/fastapi/routing.py", line 670, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/fastapi/routing.py", line 324, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harsh/Desktop/Clipping/app/routers/submissions.py", line 72, in get_passed_submissions
+    ).all()
+      ~~~^^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+           ~~~~~~~~~~^^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+        params,
+        ^^^^^^^
+        execution_options={"_sa_orm_load_options": self.load_options},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harsh/Desktop/Clipping/.venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: verified_submissions.review_status
+[SQL: SELECT verified_submissions.id AS verified_submissions_id, verified_submissions.creator_id AS verified_submissions_creator_id, verified_submissions.post_link AS verified_submissions_post_link, verified_submissions.submitter AS verified_submissions_submitter, verified_submissions.campaign_id AS verified_submissions_campaign_id, verified_submissions.passed AS verified_submissions_passed, verified_submissions.review_status AS verified_submissions_review_status, verified_submissions.rejection_reason AS verified_submissions_rejection_reason 
+FROM verified_submissions 
+WHERE verified_submissions.campaign_id = ? AND verified_submissions.passed = 1 AND verified_submissions.review_status = ?]
+[parameters: ('cuid_b062dbde4f', 'pending')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+WARNING:  WatchFiles detected changes in 'app/migrate_db.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [56333]
+INFO:     Started server process [57310]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/schemas/submission.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57310]
+INFO:     Started server process [57425]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/routers/submissions.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57425]
+INFO:     Started server process [57428]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+PostgreSQL connection failed: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: FATAL:  role "postgres" does not exist
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8). Falling back to SQLite for preview.
+INFO:     127.0.0.1:63056 - "GET /api/v1/auth/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63066 - "GET /api/v1/identity/dashboard/cuid_2ee3c88c1b HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63184 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63184 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63186 - "GET /api/v1/campaigns/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63245 - "GET /api/v1/campaigns/cuid_ce61c67b88 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63265 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63309 - "GET /api/v1/campaigns/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63342 - "POST /api/v1/campaigns/cuid_ce61c67b88/join HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:63383 - "PATCH /api/v1/campaigns/cuid_ce61c67b88/activate HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:63398 - "PATCH /api/v1/campaigns/cuid_ce61c67b88 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63398 - "PATCH /api/v1/campaigns/cuid_ce61c67b88/activate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63409 - "POST /api/v1/campaigns/cuid_ce61c67b88/join HTTP/1.1" 201 Created
+INFO:     127.0.0.1:63542 - "POST /api/v1/submissions/ HTTP/1.1" 201 Created
+AI Service: Starting evaluation for submission cuid_1a182bdca2 in campaign cuid_ce61c67b88
+AI Service: Extracted 729 views for https://www.instagram.com/virat.kohli/?hl=en on instagram
+AI Service: Verification PASSED for https://www.instagram.com/virat.kohli/?hl=en
+AI Service: Evaluation completed for https://www.instagram.com/virat.kohli/?hl=en
+INFO:     127.0.0.1:63597 - "GET /api/v1/submissions/passed/cuid_ce61c67b88 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63640 - "POST /api/v1/submissions/verify/cuid_8a9e3859c4/review HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65459 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65459 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57428]
+INFO:     Stopping reloader process [50454]
