@@ -1,0 +1,127 @@
+.page {
+  padding: 2rem;
+  max-width: 1100px;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.loadingWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 1.75rem;
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.profileGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.profileRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.86rem;
+}
+.profileRow:last-child { border-bottom: none; }
+
+.profileLabel { color: var(--muted); }
+.profileVal { font-weight: 500; }
+
+.campaignList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.campaignRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.15s;
+  gap: 12px;
+}
+.campaignRow:hover { background: var(--surface2); }
+
+.campaignName {
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.campaignMeta {
+  font-size: 0.76rem;
+  color: var(--muted);
+  text-transform: capitalize;
+}
+
+.campaignRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.campaignReward {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.viewAllBtn {
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-size: 0.83rem;
+  font-weight: 600;
+  padding: 10px 10px 4px;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.15s;
+}
+.viewAllBtn:hover { opacity: 0.75; }
+
+.empty {
+  color: var(--muted);
+  font-size: 0.88rem;
+  padding: 1rem 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  .statsGrid { grid-template-columns: repeat(2, 1fr); }
+  .twoCol { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,302 @@
+.page {
+  padding: 2rem;
+  max-width: 1100px;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.loadingWrap {
+  display: flex; align-items: center; justify-content: center;
+  height: 60vh;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+/* Campaign list */
+.campList {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: sticky;
+  top: 2rem;
+}
+
+.campListTitle {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted2);
+  padding: 12px 14px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.campItem {
+  padding: 11px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.campItem:last-child { border-bottom: none; }
+.campItem:hover { background: var(--surface2); }
+.campItemActive { background: var(--purple-dim) !important; }
+
+.campItemName {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.campItemMeta {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-transform: capitalize;
+}
+
+/* Submissions panel */
+.subsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 300px;
+}
+
+.subLoading {
+  display: flex; align-items: center; justify-content: center;
+  height: 200px;
+}
+
+.subsSection {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.subsSectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+}
+
+.countBadge {
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+.subCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  gap: 12px;
+  transition: background 0.15s;
+}
+.subCard:last-child { border-bottom: none; }
+.subCard:hover { background: rgba(255,255,255,0.02); }
+.subCardReviewed { opacity: 0.7; }
+
+.subCardLeft {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.subCreatorAvatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 11px; font-weight: 700;
+  color: white; flex-shrink: 0;
+}
+
+.subCreatorName {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.subLink {
+  font-size: 0.78rem;
+  color: var(--blue);
+  text-decoration: none;
+  word-break: break-all;
+  display: block;
+}
+.subLink:hover { text-decoration: underline; }
+
+.rejReason {
+  font-size: 0.74rem;
+  color: var(--red);
+  margin-top: 4px;
+}
+
+.subCardRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.reviewBtn {
+  background: var(--purple-dim);
+  border: 1px solid rgba(139,92,246,0.25);
+  color: var(--purple);
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.reviewBtn:hover { background: rgba(139,92,246,0.22); }
+
+/* Modal */
+.modalOverlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-lg);
+  width: 100%; max-width: 480px;
+  animation: modalIn 0.2s ease forwards;
+}
+
+.modalHeader {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modalTitle {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700;
+}
+
+.modalClose {
+  background: transparent; border: none;
+  color: var(--muted); font-size: 1rem;
+  cursor: pointer; padding: 4px 8px;
+  border-radius: 6px; transition: all 0.15s;
+}
+.modalClose:hover { background: var(--surface2); color: var(--text); }
+
+.modalBody { padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+
+.subLinkRow, .subCreatorRow {
+  display: flex; flex-direction: column; gap: 4px;
+}
+
+.subLinkLabel {
+  font-size: 0.72rem; color: var(--muted2);
+  text-transform: uppercase; letter-spacing: 0.07em;
+}
+
+.creatorId {
+  font-family: monospace; font-size: 0.82rem; color: var(--muted);
+}
+
+.decisionRow {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+
+.decisionCard {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.decisionCard:hover { border-color: var(--border2); background: var(--surface2); }
+
+.decisionApprove { border-color: var(--green) !important; background: var(--green-dim) !important; }
+.decisionReject { border-color: var(--red) !important; background: var(--red-dim) !important; }
+
+.decisionIcon { font-size: 1.2rem; margin-bottom: 4px; }
+.decisionLabel { font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; margin-bottom: 2px; }
+.decisionDesc { font-size: 0.72rem; color: var(--muted); }
+
+.reasonSection { display: flex; flex-direction: column; gap: 6px; }
+.reasonLabel { font-size: 0.8rem; color: var(--muted); font-weight: 500; margin-bottom: 2px; }
+
+.reasonOption {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer; font-size: 0.85rem;
+  transition: all 0.15s;
+}
+.reasonOption:hover { background: var(--surface2); border-color: var(--border2); }
+.reasonSelected { border-color: var(--red) !important; background: var(--red-dim) !important; }
+
+.radioCircle {
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 1.5px solid var(--border2); flex-shrink: 0;
+  transition: all 0.15s;
+}
+.radioSelected { border-color: var(--red); background: var(--red); }
+
+.modalFooter {
+  display: flex; gap: 10px; justify-content: flex-end;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* Empty states */
+.empty, .noSubs {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 3rem 2rem; text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.emptyIcon { font-size: 2.5rem; margin-bottom: 1rem; }
+.emptyTitle { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+.emptyDesc { color: var(--muted); font-size: 0.85rem; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.96) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@media (max-width: 760px) {
+  .layout { grid-template-columns: 1fr; }
+  .campList { position: static; }
+}
