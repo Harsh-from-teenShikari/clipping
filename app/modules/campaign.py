@@ -11,6 +11,7 @@ def cuid():
 class Campaign(Base):
     __tablename__ = "campaigns"
     id = Column(String, primary_key=True, default=cuid)
+    operator_id = Column(String, nullable=True)
     name = Column(String)
     type = Column(String)  # CLIPPING, AFFILIATE, SUBSCRIPTION
     status = Column(String, default="draft")

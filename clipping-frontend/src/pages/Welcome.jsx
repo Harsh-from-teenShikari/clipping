@@ -39,15 +39,7 @@ export default function Welcome() {
               navigate("/register", { state: { role: "creator" } })
             }
           >
-            Join as Creator →
-          </button>
-          <button
-            className={styles.btnGhost}
-            onClick={() =>
-              navigate("/register", { state: { role: "operator" } })
-            }
-          >
-            Create Campaigns →
+            Create Account →
           </button>
         </div>
 

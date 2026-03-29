@@ -12,6 +12,7 @@ router = APIRouter(prefix="/api/v1/campaigns", tags=["campaigns"])
 def create_campaign(body: CreateCampaignBody, db: Session = Depends(get_db)):
 
     campaign = Campaign(
+        operator_id=body.operator_id,
         name=body.name,
         type=body.type,
         region=body.region,
@@ -53,6 +54,7 @@ def create_campaign(body: CreateCampaignBody, db: Session = Depends(get_db)):
 def get_all_campaigns(
     status: Optional[str] = None,
     type: Optional[str] = None,
+    operator_id: Optional[str] = None,
     db: Session = Depends(get_db),
 ):
     query = db.query(Campaign)
@@ -60,6 +62,8 @@ def get_all_campaigns(
         query = query.filter(Campaign.status == status)
     if type:
         query = query.filter(Campaign.type == type)
+    if operator_id: 
+        query = query.filter(Campaign.operator_id == operator_id)
     campaigns = query.all()
     return [
         {
@@ -80,15 +84,19 @@ def get_campaign_detail(campaign_id: str, db: Session = Depends(get_db)):
     if not campaign:
         raise HTTPException(status_code=404, detail="Campaign not found")
     return {
-        "id": campaign.id,
-        "name": campaign.name,
-        "type": campaign.type,
-        "platform": campaign.platform,
-        "status": campaign.status,
-        "required_hashtags": campaign.required_hashtags,
-        "reward_pool": campaign.reward_pool,
-        "joined_creators": campaign.joined_creators or [],
-    }
+    "id": campaign.id,
+    "name": campaign.name,
+    "type": campaign.type,
+    "platform": campaign.platform,
+    "status": campaign.status,
+    "required_hashtags": campaign.required_hashtags,
+    "banned_keywords": campaign.banned_keywords,      
+    "target_metric": campaign.target_metric,          
+    "target_reward": campaign.target_reward,         
+    "reward_pool": campaign.reward_pool,
+    "operator_id": campaign.operator_id,
+    "joined_creators": campaign.joined_creators or [],
+}
 
 
 @router.patch("/{campaign_id}")

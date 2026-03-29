@@ -3,6 +3,7 @@ from typing import Literal, Optional
 
 
 class CreateCampaignBody(BaseModel):
+    operator_id: str
     name: str
     type: Literal["CLIPPING", "AFFILIATE", "SUBSCRIPTION"]
     platform: Literal["instagram", "youtube", "Twitter"]
